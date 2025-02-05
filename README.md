@@ -39,7 +39,7 @@ Create a .env file in the project root directory and add your GitHub personal ac
     REPO_FILTER=repo1,repo2
     LANG_FILTER=Python,JavaScript
 
-* GH_TOKEN: Your GitHub personal access token (required for API authentication).
+* GH_TOKEN: Your GitHub personal access token (required for API authentication). Make sure you give it read access to your private repos (if you want them included)
 * REPO_FILTER: A comma-separated list of repository names to exclude from analysis (optional).
 * LANG_FILTER: A comma-separated list of programming languages to exclude from the chart (optional).
 
@@ -85,7 +85,7 @@ This can be installed into a github profile readme with the following markdown:
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the AGPL License - see the [LICENSE](LICENSE) file for details.
 
 
 Feel free to copy and paste this into your project!
