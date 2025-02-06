@@ -4,6 +4,8 @@ This Python application fetches and analyzes the programming languages used in a
 
 ![Language Usage](language_chart.png)
 
+HTML Example: https://seary342.github.io/github-language-report/language_chart.html
+
 ## Features
 
 - Fetches a list of GitHub repositories for an authenticated user.
@@ -13,9 +15,9 @@ This Python application fetches and analyzes the programming languages used in a
 
 ## Requirements
 
-- Python 3.12 or higher
+- Python 3.13 or higher
 - `requests` library
-- `matplotlib` library
+- `jinja2` library
 - `python-dotenv` library
 
 You can install the required dependencies using the following:
@@ -58,13 +60,14 @@ The script will:
 - Generate a bar chart (language_chart.png) showing the language usage by byte count.
 - Print the byte count for each language in the terminal.
 
-Customization
+## Customization
 
 - Filter repositories: Use the REPO_FILTER environment variable to exclude specific repositories from analysis.
 - Filter languages: Use the LANG_FILTER environment variable to hide specific languages from the chart.
-- Chart appearance: You can adjust the chart's appearance by modifying the generate_bar_chart function.
+- Chart appearance: You can adjust the chart's appearance by modifying [templates/chart.jinja](templates/chart.jinja).
+- Icons displayed: You can add icons to the dictionary in [icons.py](icons.py). If you do, please add them back to this repo via pull request.
 
-Example
+## Example
 
 After running the script, you'll see output like:
 
@@ -72,20 +75,21 @@ Python: 123456 bytes
 JavaScript: 7890 bytes
 ...
 
-Chart saved to language_chart.png
+HTML file generated: docs/language_chart.html
 
-A language_chart.png file will be generated in the project directory, displaying the language usage across your repositories.
+Now open the html file with a browser and take a screenshot of it. This will be similar in format to [language_chart.png](language_chart.png)
 
-This can be installed into a github profile readme with the following markdown:
+This can be installed into a github profile readme repo as a standard png and displayed with the following markdown:
 
 ```
 ![Language Usage](language_chart.png)
 ```
 
+Additionally a CSV of the data will be generated. That is useful for adjusting the Jinja template implementation.
 
 ## License
 
 This project is licensed under the AGPL License - see the [LICENSE](LICENSE) file for details.
 
 
-Feel free to copy and paste this into your project!
+Feel free to make use of this for your own GitHub profile!

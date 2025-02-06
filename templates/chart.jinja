@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Usage Chart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .chart-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+        }
+        .title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .bar {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        .bar-label {
+            display: flex;
+            align-items: center;
+            width: 120px;
+            text-align: left;
+            padding-right: 10px;
+            font-weight: bold;
+        }
+        .bar-label img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        .bar-content {
+            display: flex;
+            flex: 1;
+            align-items: center;
+        }
+        .bar-fill {
+            height: 20px;
+            background-color: #007bff;
+            text-align: right;
+            padding-right: 5px;
+            color: white;
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .x-axis-label {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        /* Dark mode styles */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color:rgb(49, 53, 61);
+                color: white;
+            }
+            .bar-fill {
+                background-color: #58a6ff;
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="chart-container">
+    <div class="title">Language Usage</div>
+    
+    {% set max_bytes = data | map(attribute='1') | max %}  {# Find the max bytes value for scaling #}
+
+    {% for language, bytes, logo_url in data %}
+    <div class="bar">
+        <div class="bar-label">
+            <img src="{{ logo_url }}" alt=" ">
+            {{ language }}
+        </div>
+        <div class="bar-content">
+            <div class="bar-fill" style="width: {{ (bytes / max_bytes) * 100 }}%;"></div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
