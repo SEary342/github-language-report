@@ -2,7 +2,7 @@
 
 This Python application fetches and analyzes the programming languages used in a user's GitHub repositories. It retrieves the repository data via GitHub's API, computes the byte count of each language used, and generates a horizontal bar chart to visualize the language distribution.
 
-![Language Usage](language_chart.png)
+![Language Usage](language_chart.html)
 
 ## Features
 
@@ -13,9 +13,9 @@ This Python application fetches and analyzes the programming languages used in a
 
 ## Requirements
 
-- Python 3.12 or higher
+- Python 3.13 or higher
 - `requests` library
-- `matplotlib` library
+- `jinja2` library
 - `python-dotenv` library
 
 You can install the required dependencies using the following:
