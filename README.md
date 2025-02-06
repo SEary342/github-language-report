@@ -2,7 +2,7 @@
 
 This Python application fetches and analyzes the programming languages used in a user's GitHub repositories. It retrieves the repository data via GitHub's API, computes the byte count of each language used, and generates a horizontal bar chart to visualize the language distribution.
 
-![Language Usage](language_chart.html)
+![Language Usage](https://seary342.github.io/github-language-report/language_chart.html)
 
 ## Features
 
