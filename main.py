@@ -4,8 +4,10 @@ from typing import Optional
 from collections import defaultdict
 
 import requests
-import matplotlib.pyplot as plt
+from jinja2 import Environment, FileSystemLoader
 from dotenv import load_dotenv
+
+from config import LANG_LOOKUP
 
 # Load environment variables
 load_dotenv()
@@ -80,32 +82,26 @@ def get_languages(
 
 def generate_bar_chart(
     language_stats: tuple[str, int],
-    output_file: str = "language_chart.png",
-    transparent: bool = True,
+    output_file: str = "pages/language_chart.html",
 ):
     """
     Generates a horizontal bar chart displaying programming language usage.
 
     Args:
         language_stats (tuple[str, int]): A sorted list of (language, byte count) tuples.
-        output_file (str): The filename to save the chart as an image. Defaults to "language_chart.png".
-        transparent (bool): Whether the background of the chart should be transparent. Defaults to True.
+        output_file (str): The filename to save the chart as an html. Defaults to "language_chart.html".
     """
-    languages = [x[0] for x in language_stats]
-    usage = [x[1] for x in language_stats]
+    env = Environment(loader=FileSystemLoader("templates"))
+    template = env.get_template("chart.jinja")
+    render_data = [(x, int(y), LANG_LOOKUP.get(x)) for x, y in language_stats]
 
-    plt.figure(figsize=(10, 5))
-    plt.barh(languages, usage, color="skyblue")
-    plt.xlabel("Bytes of Code", color="#aaaaaa")
-    plt.ylabel("Programming Languages", color="#aaaaaa")
-    plt.title("Language Usage in GitHub Repositories", color="#aaaaaa")
-    plt.gca().invert_yaxis()
-    plt.gca().set_facecolor("none")
-    plt.gcf().set_facecolor("none")
-    plt.xticks(color="#aaaaaa")
-    plt.yticks(color="#aaaaaa")
-    plt.savefig(output_file, bbox_inches="tight", transparent=transparent)
-    print(f"Chart saved to {output_file}")
+    rendered_html = template.render(data=render_data)
+
+    # Save to an HTML file
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(rendered_html)
+
+    print(f"HTML file generated: {output_file}")
 
 
 def writeCSVData(data: dict[str, int]):
@@ -131,7 +127,7 @@ def main():
     filter_repos: list[str] = os.getenv("REPO_FILTER").split(",")
     hide_languages: list[str] = os.getenv("LANG_FILTER").split(",")
 
-    repos = get_github_repos(token)
+    """repos = get_github_repos(token)
     if not repos:
         print("No repositories found.")
         return
@@ -145,7 +141,14 @@ def main():
 
     for lang, count in filtered_langs:
         print(f"{lang}: {count} bytes")
-
+    """
+    with open("language_data.csv", "r") as csvfile:
+        reader = csv.DictReader(csvfile, fieldnames=["Language", "Bytes"])
+        filtered_langs = []
+        for row in reader:
+            if row["Language"] ==  "Language":
+                continue
+            filtered_langs.append((row["Language"], row["Bytes"]))
     generate_bar_chart(filtered_langs)
 
 
