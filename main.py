@@ -7,7 +7,7 @@ import requests
 from jinja2 import Environment, FileSystemLoader
 from dotenv import load_dotenv
 
-from config import LANG_LOOKUP
+from icons import LANG_LOOKUP
 
 # Load environment variables
 load_dotenv()
@@ -127,7 +127,7 @@ def main():
     filter_repos: list[str] = os.getenv("REPO_FILTER").split(",")
     hide_languages: list[str] = os.getenv("LANG_FILTER").split(",")
 
-    """repos = get_github_repos(token)
+    repos = get_github_repos(token)
     if not repos:
         print("No repositories found.")
         return
@@ -141,14 +141,7 @@ def main():
 
     for lang, count in filtered_langs:
         print(f"{lang}: {count} bytes")
-    """
-    with open("language_data.csv", "r") as csvfile:
-        reader = csv.DictReader(csvfile, fieldnames=["Language", "Bytes"])
-        filtered_langs = []
-        for row in reader:
-            if row["Language"] ==  "Language":
-                continue
-            filtered_langs.append((row["Language"], row["Bytes"]))
+
     generate_bar_chart(filtered_langs)
 
 

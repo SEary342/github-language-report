@@ -1,0 +1,18 @@
+LANG_LOOKUP = {
+    "Python": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/python/python-original.svg",
+    "Rust": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/rust/rust-original.svg",
+    "Go": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/go/go-original-wordmark.svg",
+    "JavaScript": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/javascript/javascript-original.svg",
+    "Vue": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/vuejs/vuejs-original.svg",
+    "TypeScript": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/typescript/typescript-original.svg",
+    "TSQL": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/microsoftsqlserver/microsoftsqlserver-original.svg",
+    "CSS": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/css3/css3-original.svg",
+    "HTML": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/html5/html5-original.svg",
+    "Dockerfile": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/docker/docker-original.svg",
+    "Jinja": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/flask/flask-original.svg",
+    "SCSS": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/css3/css3-original.svg",
+    "Makefile": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/bash/bash-original.svg",
+    "Java": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/java/java-original.svg",
+    "Shell": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/bash/bash-original.svg",
+    "PowerShell": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/powershell/powershell-original.svg",
+}
