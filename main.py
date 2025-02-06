@@ -82,7 +82,7 @@ def get_languages(
 
 def generate_bar_chart(
     language_stats: tuple[str, int],
-    output_file: str = "pages/language_chart.html",
+    output_file: str = "docs/language_chart.html",
 ):
     """
     Generates a horizontal bar chart displaying programming language usage.
